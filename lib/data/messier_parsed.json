@@ -1,0 +1,1102 @@
+[
+  {
+    "id": "M1&#91;17&#93;",
+    "name": "Crab Nebula",
+    "type": "Super&#173;nova remnant",
+    "distance": "4.9–8.1",
+    "constellation_latin": "Taurus",
+    "magnitude": 8.4,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M2&#91;18&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "33",
+    "constellation_latin": "Aquarius",
+    "magnitude": 6.5,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M3&#91;19&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "33.9",
+    "constellation_latin": "Canes Venatici",
+    "magnitude": 6.2,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M4&#91;20&#93;",
+    "name": "Spider Globular Cluster",
+    "type": "Globular cluster",
+    "distance": "7.2",
+    "constellation_latin": "Scorpius",
+    "magnitude": 5.6,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M5&#91;21&#93;",
+    "name": "Rose Cluster",
+    "type": "Globular cluster",
+    "distance": "24.5",
+    "constellation_latin": "Serpens",
+    "magnitude": 5.6,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M6&#91;22&#93;",
+    "name": "Butterfly Cluster",
+    "type": "Open cluster",
+    "distance": "1.6",
+    "constellation_latin": "Scorpius",
+    "magnitude": 4.2,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M7&#91;23&#93;",
+    "name": "Ptolemy's Cluster",
+    "type": "Open cluster",
+    "distance": "0.65–1.31",
+    "constellation_latin": "Scorpius",
+    "magnitude": 3.3,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M8&#91;24&#93;",
+    "name": "Lagoon Nebula",
+    "type": "Nebula with cluster",
+    "distance": "4.1",
+    "constellation_latin": "Sagittarius",
+    "magnitude": 4.6,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M9&#91;25&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "25.8",
+    "constellation_latin": "Ophiuchus",
+    "magnitude": 7.7,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M10&#91;26&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "14.3",
+    "constellation_latin": "Ophiuchus",
+    "magnitude": 6.6,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M11&#91;27&#93;",
+    "name": "Wild Duck Cluster",
+    "type": "Open cluster",
+    "distance": "6.2",
+    "constellation_latin": "Scutum",
+    "magnitude": 5.8,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M12&#91;28&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "15.7",
+    "constellation_latin": "Ophiuchus",
+    "magnitude": 6.7,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M13&#91;29&#93;",
+    "name": "Great Hercules Cluster",
+    "type": "Globular cluster",
+    "distance": "22.2",
+    "constellation_latin": "Hercules",
+    "magnitude": 5.8,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M14&#91;30&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "30.3",
+    "constellation_latin": "Ophiuchus",
+    "magnitude": 7.6,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M15&#91;31&#93;",
+    "name": "Great Pegasus Cluster",
+    "type": "Globular cluster",
+    "distance": "33",
+    "constellation_latin": "Pegasus",
+    "magnitude": 6.2,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M16&#91;32&#93;",
+    "name": "Eagle Nebula",
+    "type": "H II region nebula with cluster",
+    "distance": "7",
+    "constellation_latin": "Serpens",
+    "magnitude": 6.4,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M17&#91;33&#93;",
+    "name": "Omega, Swan, Horseshoe, Lobster, or Checkmark Nebula",
+    "type": "H II region nebula with cluster",
+    "distance": "5–6",
+    "constellation_latin": "Sagittarius",
+    "magnitude": 6.0,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M18&#91;34&#93;",
+    "name": "Black Swan Cluster",
+    "type": "Open cluster",
+    "distance": "4.9",
+    "constellation_latin": "Sagittarius",
+    "magnitude": 7.5,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M19&#91;35&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "28.7",
+    "constellation_latin": "Ophiuchus",
+    "magnitude": 6.8,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M20&#91;36&#93;",
+    "name": "Trifid Nebula",
+    "type": "H II region nebula with cluster",
+    "distance": "5.2",
+    "constellation_latin": "Sagittarius",
+    "magnitude": 6.3,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M21&#91;37&#93;",
+    "name": "Webb's Cross Cluster",
+    "type": "Open cluster",
+    "distance": "4.25",
+    "constellation_latin": "Sagittarius",
+    "magnitude": 6.5,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M22&#91;38&#93;",
+    "name": "Great Sagittarius Cluster",
+    "type": "Globular cluster",
+    "distance": "9.6–11.6",
+    "constellation_latin": "Sagittarius",
+    "magnitude": 5.1,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M23&#91;39&#93;",
+    "name": "—",
+    "type": "Open cluster",
+    "distance": "2.15",
+    "constellation_latin": "Sagittarius",
+    "magnitude": 5.5,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M24&#91;40&#93;",
+    "name": "Small Sagittarius Star Cloud",
+    "type": "Milky Way star cloud",
+    "distance": "~10",
+    "constellation_latin": "Sagittarius",
+    "magnitude": 2.5,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M25&#91;41&#93;",
+    "name": "—",
+    "type": "Open cluster",
+    "distance": "2.0",
+    "constellation_latin": "Sagittarius",
+    "magnitude": 4.6,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M26&#91;42&#93;",
+    "name": "—",
+    "type": "Open cluster",
+    "distance": "5.0",
+    "constellation_latin": "Scutum",
+    "magnitude": 8.0,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M27&#91;43&#93;",
+    "name": "Dumbbell Nebula",
+    "type": "Planetary nebula",
+    "distance": "1.148–1.52",
+    "constellation_latin": "Vulpecula",
+    "magnitude": 7.4,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M28&#91;44&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "17.9",
+    "constellation_latin": "Sagittarius",
+    "magnitude": 6.8,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M29&#91;45&#93;",
+    "name": "Cooling Tower Cluster",
+    "type": "Open cluster",
+    "distance": "7.2",
+    "constellation_latin": "Cygnus",
+    "magnitude": 7.1,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M30&#91;46&#93;",
+    "name": "Jellyfish Cluster",
+    "type": "Globular cluster",
+    "distance": "27.8–31",
+    "constellation_latin": "Capricornus",
+    "magnitude": 7.2,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M31&#91;47&#93;",
+    "name": "Andromeda Galaxy",
+    "type": "Spiral galaxy",
+    "distance": "2,430–2,650",
+    "constellation_latin": "Andromeda",
+    "magnitude": 3.4,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M32&#91;48&#93;",
+    "name": "Andromeda Satellite #1",
+    "type": "Dwarf elliptical galaxy",
+    "distance": "2,410–2,570",
+    "constellation_latin": "Andromeda",
+    "magnitude": 8.1,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M33&#91;49&#93;",
+    "name": "Triangulum/Pinwheel Galaxy",
+    "type": "Spiral galaxy",
+    "distance": "2,380–3,070",
+    "constellation_latin": "Triangulum",
+    "magnitude": 5.7,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M34&#91;50&#93;",
+    "name": "Spiral Cluster",
+    "type": "Open cluster",
+    "distance": "1.5",
+    "constellation_latin": "Perseus",
+    "magnitude": 5.5,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M35&#91;51&#93;",
+    "name": "Shoe-Buckle Cluster",
+    "type": "Open cluster",
+    "distance": "2.8",
+    "constellation_latin": "Gemini",
+    "magnitude": 5.3,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M36&#91;52&#93;",
+    "name": "Pinwheel Cluster",
+    "type": "Open cluster",
+    "distance": "4.1",
+    "constellation_latin": "Auriga",
+    "magnitude": 6.3,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M37&#91;53&#93;",
+    "name": "Salt and Pepper Cluster",
+    "type": "Open cluster",
+    "distance": "4.511",
+    "constellation_latin": "Auriga",
+    "magnitude": 6.2,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M38&#91;54&#93;",
+    "name": "Starfish Cluster",
+    "type": "Open cluster",
+    "distance": "4.2",
+    "constellation_latin": "Auriga",
+    "magnitude": 7.4,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M39&#91;55&#93;",
+    "name": "Pyramid Cluster",
+    "type": "Open cluster",
+    "distance": "0.8244",
+    "constellation_latin": "Cygnus",
+    "magnitude": 4.6,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M40&#91;56&#93;",
+    "name": "Winnecke 4",
+    "type": "Optical Double",
+    "distance": "0.51",
+    "constellation_latin": "Ursa Major",
+    "magnitude": 8.4,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M41&#91;57&#93;",
+    "name": "Little Beehive Cluster",
+    "type": "Open cluster",
+    "distance": "2.3",
+    "constellation_latin": "Canis Major",
+    "magnitude": 4.5,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M42&#91;58&#93;",
+    "name": "Great Orion Nebula",
+    "type": "H II region nebula",
+    "distance": "1.324–1.364",
+    "constellation_latin": "Orion",
+    "magnitude": 4.0,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M43&#91;59&#93;",
+    "name": "De Mairan's Nebula",
+    "type": "H II region nebula (part of the Orion Nebula)",
+    "distance": "1.6",
+    "constellation_latin": "Orion",
+    "magnitude": 9.0,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M44&#91;60&#93;",
+    "name": "Beehive Cluster or Praesepe",
+    "type": "Open cluster",
+    "distance": "0.577",
+    "constellation_latin": "Cancer",
+    "magnitude": 3.7,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M45&#91;61&#93;",
+    "name": "Pleiades, Seven Sisters or Subaru",
+    "type": "Open cluster",
+    "distance": "0.39–0.46",
+    "constellation_latin": "Taurus",
+    "magnitude": 1.6,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M46&#91;62&#93;",
+    "name": "—",
+    "type": "Open cluster",
+    "distance": "5.4",
+    "constellation_latin": "Puppis",
+    "magnitude": 6.0,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M47&#91;63&#93;",
+    "name": "—",
+    "type": "Open cluster",
+    "distance": "1.6",
+    "constellation_latin": "Puppis",
+    "magnitude": 4.4,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M48&#91;64&#93;",
+    "name": "—",
+    "type": "Open cluster",
+    "distance": "1.5",
+    "constellation_latin": "Hydra",
+    "magnitude": 5.5,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M49&#91;65&#93;",
+    "name": "—",
+    "type": "Elliptical galaxy",
+    "distance": "53,600–58,200",
+    "constellation_latin": "Virgo",
+    "magnitude": 8.4,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M50&#91;66&#93;",
+    "name": "Heart-Shaped Cluster",
+    "type": "Open cluster",
+    "distance": "3.2",
+    "constellation_latin": "Monoceros",
+    "magnitude": 5.9,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M51&#91;67&#93;",
+    "name": "Whirlpool Galaxy",
+    "type": "Spiral galaxy",
+    "distance": "19,000–27,000",
+    "constellation_latin": "Canes Venatici",
+    "magnitude": 8.4,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M52&#91;68&#93;",
+    "name": "Scorpion Cluster",
+    "type": "Open cluster",
+    "distance": "5.0",
+    "constellation_latin": "Cassiopeia",
+    "magnitude": 7.3,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M53&#91;69&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "58",
+    "constellation_latin": "Coma Berenices",
+    "magnitude": 7.6,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M54&#91;70&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "87.4",
+    "constellation_latin": "Sagittarius",
+    "magnitude": 7.6,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M55&#91;71&#93;",
+    "name": "Specter Cluster",
+    "type": "Globular cluster",
+    "distance": "17.6",
+    "constellation_latin": "Sagittarius",
+    "magnitude": 6.3,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M56&#91;72&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "32.9",
+    "constellation_latin": "Lyra",
+    "magnitude": 8.3,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M57&#91;73&#93;",
+    "name": "Ring Nebula",
+    "type": "Planetary nebula",
+    "distance": "1.6–3.8",
+    "constellation_latin": "Lyra",
+    "magnitude": 8.8,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M58&#91;74&#93;",
+    "name": "—",
+    "type": "Barred Spiral galaxy",
+    "distance": "~63,000",
+    "constellation_latin": "Virgo",
+    "magnitude": 9.7,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M59&#91;75&#93;",
+    "name": "—",
+    "type": "Elliptical galaxy",
+    "distance": "55,000–65,000",
+    "constellation_latin": "Virgo",
+    "magnitude": 9.6,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M60&#91;76&#93;",
+    "name": "—",
+    "type": "Elliptical galaxy",
+    "distance": "51,000–59,000",
+    "constellation_latin": "Virgo",
+    "magnitude": 8.8,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M61&#91;77&#93;",
+    "name": "Swelling Spiral Galaxy",
+    "type": "Spiral galaxy",
+    "distance": "50,200–54,800",
+    "constellation_latin": "Virgo",
+    "magnitude": 9.7,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M62&#91;78&#93;",
+    "name": "Flickering Globular",
+    "type": "Globular cluster",
+    "distance": "22.2",
+    "constellation_latin": "Ophiuchus",
+    "magnitude": 6.5,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M63&#91;79&#93;",
+    "name": "Sunflower Galaxy",
+    "type": "Spiral galaxy",
+    "distance": "37,000",
+    "constellation_latin": "Canes Venatici",
+    "magnitude": 8.6,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M64&#91;80&#93;",
+    "name": "Black Eye Galaxy",
+    "type": "Spiral galaxy",
+    "distance": "22,000–26,000",
+    "constellation_latin": "Coma Berenices",
+    "magnitude": 8.5,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M65&#91;81&#93;",
+    "name": "Leo Triplet",
+    "type": "Barred Spiral galaxy",
+    "distance": "41,000–42,000",
+    "constellation_latin": "Leo",
+    "magnitude": 9.3,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M66&#91;82&#93;",
+    "name": "Leo Triplet",
+    "type": "Barred Spiral galaxy",
+    "distance": "31,000–41,000",
+    "constellation_latin": "Leo",
+    "magnitude": 8.9,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M67&#91;83&#93;",
+    "name": "King Cobra or Golden Eye Cluster",
+    "type": "Open cluster",
+    "distance": "2.61–2.93",
+    "constellation_latin": "Cancer",
+    "magnitude": 6.1,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M68&#91;84&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "33.6",
+    "constellation_latin": "Hydra",
+    "magnitude": 7.8,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M69&#91;85&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "29.7",
+    "constellation_latin": "Sagittarius",
+    "magnitude": 7.6,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M70&#91;86&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "29.4",
+    "constellation_latin": "Sagittarius",
+    "magnitude": 7.9,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M71&#91;87&#93;",
+    "name": "Angelfish Cluster",
+    "type": "Globular cluster",
+    "distance": "13.0",
+    "constellation_latin": "Sagitta",
+    "magnitude": 8.2,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M72&#91;88&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "53.40–55.74",
+    "constellation_latin": "Aquarius",
+    "magnitude": 9.3,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M73&#91;89&#93;",
+    "name": "—",
+    "type": "Asterism",
+    "distance": "~2.5",
+    "constellation_latin": "Aquarius",
+    "magnitude": 9.0,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M74&#91;90&#93;",
+    "name": "Phantom Galaxy&#91;91&#93;",
+    "type": "Spiral galaxy",
+    "distance": "24,000–36,000",
+    "constellation_latin": "Pisces",
+    "magnitude": 9.4,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M75&#91;92&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "67.5",
+    "constellation_latin": "Sagittarius",
+    "magnitude": 8.5,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M76&#91;93&#93;",
+    "name": "Little Dumbbell Nebula",
+    "type": "Planetary nebula",
+    "distance": "2.5",
+    "constellation_latin": "Perseus",
+    "magnitude": 10.1,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M77&#91;94&#93;",
+    "name": "Cetus A or Squid Galaxy",
+    "type": "Spiral galaxy",
+    "distance": "47,000",
+    "constellation_latin": "Cetus",
+    "magnitude": 8.9,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M78&#91;95&#93;",
+    "name": "—",
+    "type": "Diffuse nebula",
+    "distance": "1.6",
+    "constellation_latin": "Orion",
+    "magnitude": 8.3,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M79&#91;96&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "41",
+    "constellation_latin": "Lepus",
+    "magnitude": 7.7,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M80&#91;97&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "32.6",
+    "constellation_latin": "Scorpius",
+    "magnitude": 7.3,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M81&#91;98&#93;",
+    "name": "Bode's Galaxy",
+    "type": "Spiral galaxy",
+    "distance": "11,400–12,200",
+    "constellation_latin": "Ursa Major",
+    "magnitude": 6.9,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M82&#91;99&#93;",
+    "name": "Cigar Galaxy",
+    "type": "Starburst galaxy",
+    "distance": "10,700–12,300",
+    "constellation_latin": "Ursa Major",
+    "magnitude": 8.4,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M83&#91;100&#93;",
+    "name": "Southern Pinwheel Galaxy",
+    "type": "Barred Spiral galaxy",
+    "distance": "14,700",
+    "constellation_latin": "Hydra",
+    "magnitude": 7.6,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M84&#91;101&#93;",
+    "name": "—",
+    "type": "Lenticular galaxy",
+    "distance": "57,000–63,000",
+    "constellation_latin": "Virgo",
+    "magnitude": 9.1,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M85&#91;102&#93;",
+    "name": "—",
+    "type": "Lenticular galaxy",
+    "distance": "56,000–64,000",
+    "constellation_latin": "Coma Berenices",
+    "magnitude": 9.1,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M86&#91;103&#93;",
+    "name": "—",
+    "type": "Lenticular galaxy",
+    "distance": "49,000–55,000",
+    "constellation_latin": "Virgo",
+    "magnitude": 8.9,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M87&#91;104&#93;",
+    "name": "Virgo A",
+    "type": "Elliptical galaxy",
+    "distance": "51,870–55,130",
+    "constellation_latin": "Virgo",
+    "magnitude": 8.6,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M88&#91;105&#93;",
+    "name": "—",
+    "type": "Spiral galaxy",
+    "distance": "39,000–56,000",
+    "constellation_latin": "Coma Berenices",
+    "magnitude": 9.6,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M89&#91;106&#93;",
+    "name": "—",
+    "type": "Elliptical galaxy",
+    "distance": "47,000–53,000",
+    "constellation_latin": "Virgo",
+    "magnitude": 9.8,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M90&#91;107&#93;",
+    "name": "—",
+    "type": "Spiral galaxy",
+    "distance": "55,900–61,500",
+    "constellation_latin": "Virgo",
+    "magnitude": 9.5,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M91&#91;108&#93;",
+    "name": "—",
+    "type": "Barred Spiral galaxy",
+    "distance": "47,000–79,000",
+    "constellation_latin": "Coma Berenices",
+    "magnitude": 10.2,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M92&#91;109&#93;",
+    "name": "—",
+    "type": "Globular cluster",
+    "distance": "26.7",
+    "constellation_latin": "Hercules",
+    "magnitude": 6.4,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M93&#91;110&#93;",
+    "name": "Critter Cluster",
+    "type": "Open cluster",
+    "distance": "3.6",
+    "constellation_latin": "Puppis",
+    "magnitude": 6.0,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M94&#91;111&#93;",
+    "name": "Crocodile Eye or Cat's Eye Galaxy",
+    "type": "Spiral galaxy",
+    "distance": "14,700–17,300",
+    "constellation_latin": "Canes Venatici",
+    "magnitude": 8.2,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M95&#91;112&#93;",
+    "name": "—",
+    "type": "Barred Spiral galaxy",
+    "distance": "31,200–34,000",
+    "constellation_latin": "Leo",
+    "magnitude": 9.7,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M96&#91;113&#93;",
+    "name": "—",
+    "type": "Spiral galaxy",
+    "distance": "28,000–34,000",
+    "constellation_latin": "Leo",
+    "magnitude": 9.2,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M97&#91;114&#93;",
+    "name": "Owl Nebula",
+    "type": "Planetary nebula",
+    "distance": "2.03",
+    "constellation_latin": "Ursa Major",
+    "magnitude": 9.9,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M98&#91;115&#93;",
+    "name": "—",
+    "type": "Spiral galaxy",
+    "distance": "44,400",
+    "constellation_latin": "Coma Berenices",
+    "magnitude": 10.1,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M99&#91;116&#93;",
+    "name": "St. Catherine's Wheel",
+    "type": "Spiral galaxy",
+    "distance": "44,700–55,700",
+    "constellation_latin": "Coma Berenices",
+    "magnitude": 9.9,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M100&#91;117&#93;",
+    "name": "Mirror Galaxy",
+    "type": "Spiral galaxy",
+    "distance": "55,000",
+    "constellation_latin": "Coma Berenices",
+    "magnitude": 9.3,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M101&#91;118&#93;",
+    "name": "Pinwheel Galaxy",
+    "type": "Spiral galaxy",
+    "distance": "19,100–22,400",
+    "constellation_latin": "Ursa Major",
+    "magnitude": 7.9,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M102&#91;119&#93;",
+    "name": "Spindle Galaxy",
+    "type": "Lenticular galaxy",
+    "distance": "50,000",
+    "constellation_latin": "Draco",
+    "magnitude": 9.9,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M103&#91;120&#93;",
+    "name": "—",
+    "type": "Open cluster",
+    "distance": "10",
+    "constellation_latin": "Cassiopeia",
+    "magnitude": 7.4,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M104&#91;121&#93;",
+    "name": "Sombrero Galaxy",
+    "type": "Spiral galaxy",
+    "distance": "28,700–30,900",
+    "constellation_latin": "Virgo",
+    "magnitude": 8.0,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M105&#91;122&#93;",
+    "name": "—",
+    "type": "Elliptical galaxy",
+    "distance": "30,400–33,600",
+    "constellation_latin": "Leo",
+    "magnitude": 9.3,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M106&#91;123&#93;",
+    "name": "—",
+    "type": "Spiral galaxy",
+    "distance": "22,200–25,200",
+    "constellation_latin": "Canes Venatici",
+    "magnitude": 8.4,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M107&#91;124&#93;",
+    "name": "Crucifix Cluster",
+    "type": "Globular cluster",
+    "distance": "20.9",
+    "constellation_latin": "Ophiuchus",
+    "magnitude": 7.9,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M108&#91;125&#93;",
+    "name": "Surfboard Galaxy",
+    "type": "Barred Spiral galaxy",
+    "distance": "46,000",
+    "constellation_latin": "Ursa Major",
+    "magnitude": 10.0,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M109&#91;126&#93;",
+    "name": "Vacuum Cleaner Galaxy",
+    "type": "Barred Spiral galaxy",
+    "distance": "59,500–107,500",
+    "constellation_latin": "Ursa Major",
+    "magnitude": 9.8,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  },
+  {
+    "id": "M110&#91;127&#93;",
+    "name": "Andromeda Satellite #2",
+    "type": "Dwarf elliptical galaxy",
+    "distance": "2,600–2,780",
+    "constellation_latin": "Andromeda",
+    "magnitude": 8.5,
+    "raHours": 0.0,
+    "decDegrees": 0.0
+  }
+]

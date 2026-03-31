@@ -1,0 +1,46 @@
+# Flutter/Dart
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Environment - NEVER commit .env
+.env
+
+# Android build artifacts
+/android/app/debug/
+/android/app/profile/
+/android/app/release/
+android/.kotlin/
+android/local.properties
+
+# Android signing - never commit keystore
+android/key.properties
+*.jks
+*.keystore
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Symbolication / Obfuscation
+app.*.symbols
+app.*.map.json
+
+# Logs
+*.log
+*.txt
+
+# Splash / Icon build intermediates
+.flutter-plugins
