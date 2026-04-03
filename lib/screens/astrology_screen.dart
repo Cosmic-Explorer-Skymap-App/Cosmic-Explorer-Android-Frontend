@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:cosmic_explorer/l10n/generated/app_localizations.dart';
 import '../services/astrology_service.dart';
 import '../services/user_data_service.dart';
-import '../services/auth_service.dart';
-import '../services/api_service.dart';
 import '../theme/space_theme.dart';
 
 class AstrologyScreen extends StatefulWidget {
@@ -16,9 +14,6 @@ class AstrologyScreen extends StatefulWidget {
 class _AstrologyScreenState extends State<AstrologyScreen> {
   DateTime? _birthDate;
   bool _isLoading = true;
-  bool _isPremiumOrTrial = false;
-  bool _isAiLoading = false;
-  String? _aiPrediction;
 
   @override
   void initState() {
@@ -28,11 +23,8 @@ class _AstrologyScreenState extends State<AstrologyScreen> {
 
   Future<void> _loadData() async {
     final date = UserDataService.getBirthDate();
-    final status = await AuthService.checkUserStatus();
-
     setState(() {
       _birthDate = date;
-      _isPremiumOrTrial = status;
       _isLoading = false;
     });
   }
@@ -72,38 +64,6 @@ class _AstrologyScreenState extends State<AstrologyScreen> {
     });
   }
 
-  Future<void> _getAiReading() async {
-    setState(() => _isAiLoading = true);
-    try {
-      final sign = AstrologyService.getSign(_birthDate!);
-      final response = await ApiService.post('/api/ai/astrology', data: {
-        'sign': sign.name.split('.').last, // Name string
-      });
-
-      if (response.statusCode == 200 && response.data['success'] == true) {
-        setState(() {
-          _aiPrediction = response.data['prediction'];
-        });
-      } else {
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(response.data['detail'] ?? response.data['message'] ?? 'AI Hatası.')),
-          );
-        }
-      }
-    } catch (e) {
-      if (mounted) {
-         ScaffoldMessenger.of(context).showSnackBar(
-           const SnackBar(content: Text('AI yüklenirken hata oluştu veya günlük limit doldu.')),
-         );
-      }
-    } finally {
-      if (mounted) {
-         setState(() => _isAiLoading = false);
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     if (_isLoading) {
@@ -120,7 +80,7 @@ class _AstrologyScreenState extends State<AstrologyScreen> {
       appBar: AppBar(
         title: Text(l10n.astrologyScreenTitle),
         actions: [
-          if (_birthDate != null && _isPremiumOrTrial)
+          if (_birthDate != null)
             IconButton(
               icon: const Icon(Icons.refresh),
               tooltip: l10n.astrologyResetDate,
@@ -191,6 +151,7 @@ class _AstrologyScreenState extends State<AstrologyScreen> {
     final signName = AstrologyService.getSignName(sign, langCode);
     final signEmoji = AstrologyService.getSignEmoji(sign);
 
+    final daily = AstrologyService.getDailyPrediction(sign, langCode);
     final monthly = AstrologyService.getMonthlyPrediction(sign, langCode);
     final yearly = AstrologyService.getYearlyPrediction(sign, langCode);
 
@@ -225,33 +186,13 @@ class _AstrologyScreenState extends State<AstrologyScreen> {
             style: const TextStyle(color: Colors.white54, fontSize: 16),
           ),
           const SizedBox(height: 40),
-          
-          // AI Predicition Card
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(24),
-            decoration: SpaceTheme.glassCard.copyWith(
-              border: Border.all(color: SpaceTheme.stellarGold.withValues(alpha: 0.3)),
-            ),
-            child: Column(
-              children: [
-                const Icon(Icons.auto_awesome, color: SpaceTheme.stellarGold, size: 48),
-                const SizedBox(height: 16),
-                const Text(
-                  'Astroloji AI',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Yapay zeka asistanımız çok yakında sizlerle! ✨',
-                  style: TextStyle(color: Colors.white.withValues(alpha: 0.7), fontSize: 14),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
+          _PredictionCard(
+            title: l10n.astrologyDaily,
+            content: daily,
+            icon: Icons.wb_sunny,
+            color: SpaceTheme.stellarGold,
           ),
-          
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
           _PredictionCard(
             title: l10n.astrologyMonthly,
             content: monthly,
