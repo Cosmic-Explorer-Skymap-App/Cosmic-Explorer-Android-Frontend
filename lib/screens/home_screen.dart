@@ -11,6 +11,7 @@ import 'favorites_screen.dart';
 import 'messier_screen.dart';
 import 'astrology_screen.dart';
 import 'gallery_screen.dart';
+import 'feed_screen.dart';
 import '../services/auth_service.dart';
 import 'login_screen.dart';
 import '../services/iss_service.dart';
@@ -354,6 +355,20 @@ class _HomeBody extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              const SizedBox(height: 12),
+
+              // Cosmic Feed
+              _QuickActionCard(
+                title: 'Cosmic Feed',
+                emoji: '🌌',
+                color: SpaceTheme.nebulaPurple,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const FeedScreen()),
+                  );
+                },
               ),
               const SizedBox(height: 24),
 

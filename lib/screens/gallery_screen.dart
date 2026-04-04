@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../services/gallery_service.dart';
 import '../theme/space_theme.dart';
+import 'create_post_screen.dart';
 
 class GalleryScreen extends StatefulWidget {
   const GalleryScreen({super.key});
@@ -172,6 +173,17 @@ class _GalleryScreenState extends State<GalleryScreen> {
                   right: 4,
                   child: Row(
                     children: [
+                      _CircleActionBtn(
+                        icon: Icons.send_outlined,
+                        color: SpaceTheme.nebulaPurple,
+                        onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => CreatePostScreen(galleryItem: item),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 4),
                       _CircleActionBtn(
                         icon: Icons.share,
                         color: Colors.blueAccent,

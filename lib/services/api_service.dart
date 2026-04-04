@@ -62,4 +62,23 @@ class ApiService {
   static Future<Response> post(String path, {dynamic data}) async {
     return await _dio.post(path, data: data);
   }
+
+  // POST with FormData (multipart)
+  static Future<Response> postForm(String path, {required FormData data}) async {
+    return await _dio.post(
+      path,
+      data: data,
+      options: Options(contentType: 'multipart/form-data'),
+    );
+  }
+
+  // PUT Wrapper
+  static Future<Response> put(String path, {dynamic data}) async {
+    return await _dio.put(path, data: data);
+  }
+
+  // DELETE Wrapper
+  static Future<Response> delete(String path) async {
+    return await _dio.delete(path);
+  }
 }
