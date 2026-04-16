@@ -18,6 +18,7 @@ import '../services/iss_service.dart';
 import '../services/calendar_service.dart'; // Added
 import '../services/notification_service.dart'; // Added
 import 'dart:async'; // Added for Timer
+import 'support_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,10 +32,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin, 
   late final AnimationController _fadeController;
   late Animation<double> _fadeAnim;
   BannerAd? _bannerAd;
-  UserStatus? _userStatus; // Added
 
   List<Widget> get _screens => [
-    _HomeBody(status: _userStatus), // Added status
+    const _HomeBody(),
     const PlanetsScreen(),
     const ConstellationsScreen(),
     const QuizScreen(),
@@ -51,21 +51,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin, 
     _fadeAnim = CurvedAnimation(parent: _fadeController, curve: Curves.easeIn);
     _fadeController.forward();
     _loadBannerAd();
-    _loadUserStatus(); // Added
-    WidgetsBinding.instance.addObserver(this); // Added
+    WidgetsBinding.instance.addObserver(this);
     Timer(const Duration(seconds: 4), () => NotificationService.showNotification(
       title: "🌠 Yaklaşan Gök Olayı",
       body: "Lunar Eclipse (Ay Tutulması) 3 Mart'ta gerçekleşecek!",
     ));
-  }
-
-  Future<void> _loadUserStatus() async {
-    final status = await AuthService.getUserStatus();
-    if (mounted) {
-      setState(() {
-        _userStatus = status;
-      });
-    }
   }
 
   Future<void> _loadBannerAd() async {
@@ -83,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin, 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      _loadUserStatus().then((_) => _loadBannerAd());
+      _loadBannerAd();
     }
   }
 
@@ -165,6 +155,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin, 
           ),
           // Premium Üyelik removed as per user request
           const Divider(color: Colors.white24),
+          ListTile(
+            leading: const Icon(Icons.help_outline, color: Colors.blueAccent),
+            title: const Text("Destek"),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const SupportScreen()),
+              );
+            },
+          ),
           const Spacer(),
           ListTile(
             leading: const Icon(Icons.logout, color: Colors.redAccent),
@@ -189,11 +190,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin, 
 
 /// Home body with hero header and feature cards.
 class _HomeBody extends StatelessWidget {
-  final UserStatus? status;
-
-  const _HomeBody({this.status});
-
-  // _buildTrialBanner removed as per user request
+  const _HomeBody();
 
   @override
   Widget build(BuildContext context) {
@@ -250,10 +247,12 @@ class _HomeBody extends StatelessWidget {
                 subtitle: l10n.skyMapFeatureSubtitle,
                 emoji: '🔭',
                 gradient: const [Color(0xFF6C63FF), Color(0xFF3D5AFE)],
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const SkyMapScreen()),
-                ),
+                onTap: () => AdService.showInterstitialAd(() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const SkyMapScreen()),
+                  );
+                }),
               ),
               const SizedBox(height: 16),
 

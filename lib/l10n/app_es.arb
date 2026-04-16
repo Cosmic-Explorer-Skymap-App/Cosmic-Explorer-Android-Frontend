@@ -79,5 +79,9 @@
     "astrologyDaily": "Horóscopo Diario",
     "astrologyMonthly": "Resumen Mensual",
     "astrologyYearly": "Visión Anual",
-    "astrologyResetDate": "Restablecer fecha de nacimiento"
+    "astrologyResetDate": "Restablecer fecha de nacimiento",
+    "timeJustNow": "ahora mismo",
+    "timeMinuteSuffix": "min",
+    "timeHourSuffix": "h",
+    "timeDaySuffix": "d"
 }

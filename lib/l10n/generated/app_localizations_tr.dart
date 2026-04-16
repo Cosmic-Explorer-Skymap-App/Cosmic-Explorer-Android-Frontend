@@ -257,4 +257,16 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get astrologyResetDate => 'Doğum Tarihini Sıfırla';
+
+  @override
+  String get timeJustNow => 'az önce';
+
+  @override
+  String get timeMinuteSuffix => 'dk önce';
+
+  @override
+  String get timeHourSuffix => 's önce';
+
+  @override
+  String get timeDaySuffix => 'g önce';
 }

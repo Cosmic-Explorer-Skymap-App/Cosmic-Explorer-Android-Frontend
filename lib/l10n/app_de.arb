@@ -79,5 +79,9 @@
     "astrologyDaily": "Tageshoroskop",
     "astrologyMonthly": "Monatlicher Einblick",
     "astrologyYearly": "Jahresübersicht",
-    "astrologyResetDate": "Geburtsdatum zurücksetzen"
+    "astrologyResetDate": "Geburtsdatum zurücksetzen",
+    "timeJustNow": "gerade eben",
+    "timeMinuteSuffix": " Min.",
+    "timeHourSuffix": " Std.",
+    "timeDaySuffix": " T."
 }

@@ -119,18 +119,20 @@ class FeedService {
     return UserProfile.fromJson(response.data);
   }
 
-  static Future<UserProfile> getUserProfile(int userId) async {
-    final response = await ApiService.get('/api/users/$userId/profile');
+  static Future<UserProfile> uploadAvatar(File image) async {
+    final formData = FormData.fromMap({
+      'avatar': await MultipartFile.fromFile(
+        image.path,
+        filename: image.path.split('/').last,
+      ),
+    });
+    final response = await ApiService.postForm('/api/users/me/profile/avatar', data: formData);
     return UserProfile.fromJson(response.data);
   }
 
-  static Future<bool> hasProfile() async {
-    try {
-      await getMyProfile();
-      return true;
-    } catch (_) {
-      return false;
-    }
+  static Future<UserProfile> getUserProfile(int userId) async {
+    final response = await ApiService.get('/api/users/$userId/profile');
+    return UserProfile.fromJson(response.data);
   }
 
   // ---------------------------------------------------------------------------

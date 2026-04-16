@@ -35,7 +35,11 @@ class UserProfile {
     );
   }
 
-  UserProfile copyWith({bool? isFollowing, int? followerCount}) {
+  UserProfile copyWith({
+    bool? isFollowing,
+    int? followerCount,
+    int? followingCount,
+  }) {
     return UserProfile(
       userId: userId,
       username: username,
@@ -43,7 +47,7 @@ class UserProfile {
       avatarUrl: avatarUrl,
       bio: bio,
       followerCount: followerCount ?? this.followerCount,
-      followingCount: followingCount,
+      followingCount: followingCount ?? this.followingCount,
       postCount: postCount,
       isFollowing: isFollowing ?? this.isFollowing,
     );

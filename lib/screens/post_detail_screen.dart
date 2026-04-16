@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import '../l10n/generated/app_localizations.dart';
 import '../models/post_model.dart';
 import '../services/feed_service.dart';
 import '../theme/space_theme.dart';
+import '../utils/time_utils.dart';
 import '../widgets/user_avatar.dart';
 import '../widgets/comments_bottom_sheet.dart';
 import 'user_profile_screen.dart';
@@ -113,7 +115,8 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14)),
-                        Text('@${_post.username}  ·  ${_post.timeAgo}',
+                        Text(
+                            '@${_post.username}  ·  ${formatTimeAgo(_post.createdAt, AppLocalizations.of(context)!)}',
                             style: const TextStyle(
                                 color: Colors.white38, fontSize: 11)),
                       ],

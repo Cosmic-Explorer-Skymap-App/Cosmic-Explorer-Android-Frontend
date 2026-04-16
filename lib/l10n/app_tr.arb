@@ -79,5 +79,9 @@
     "astrologyDaily": "Günlük Yorum",
     "astrologyMonthly": "Aylık Bakış",
     "astrologyYearly": "Yıllık Öngörü",
-    "astrologyResetDate": "Doğum Tarihini Sıfırla"
+    "astrologyResetDate": "Doğum Tarihini Sıfırla",
+    "timeJustNow": "az önce",
+    "timeMinuteSuffix": "dk önce",
+    "timeHourSuffix": "s önce",
+    "timeDaySuffix": "g önce"
 }
