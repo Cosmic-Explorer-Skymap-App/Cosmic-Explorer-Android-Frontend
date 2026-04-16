@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import '../models/post_model.dart';
 import '../models/user_profile_model.dart';
@@ -5,6 +6,7 @@ import '../services/feed_service.dart';
 import '../theme/space_theme.dart';
 import '../widgets/post_card.dart';
 import 'create_post_screen.dart';
+import 'reels_screen.dart';
 import 'user_profile_screen.dart';
 import 'setup_username_screen.dart';
 
@@ -24,7 +26,9 @@ class _FeedScreenState extends State<FeedScreen>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
+    // Rebuild when tab changes so FAB and physics update reactively
+    _tabController.addListener(() => setState(() {}));
     _checkProfile();
   }
 
@@ -38,9 +42,11 @@ class _FeedScreenState extends State<FeedScreen>
     try {
       final profile = await FeedService.getMyProfile();
       if (mounted) setState(() => _myProfile = profile);
-    } catch (_) {
-      // No profile yet — prompt setup
-      if (mounted) {
+    } on DioException catch (e) {
+      // Only redirect to setup when the server explicitly says "no profile" (404).
+      // For network errors or other failures, stay on the loading screen so the
+      // user can retry rather than being sent to the setup flow incorrectly.
+      if (e.response?.statusCode == 404 && mounted) {
         final result = await Navigator.push<UserProfile>(
           context,
           MaterialPageRoute(builder: (_) => const SetupUsernameScreen()),
@@ -73,35 +79,61 @@ class _FeedScreenState extends State<FeedScreen>
       );
     }
 
+    final isReels = _tabController.index == 2;
+
     return Scaffold(
       backgroundColor: SpaceTheme.deepSpace,
+      extendBodyBehindAppBar: isReels,
       appBar: AppBar(
-        backgroundColor: SpaceTheme.deepSpace,
+        backgroundColor:
+            isReels ? Colors.transparent : SpaceTheme.deepSpace,
         elevation: 0,
-        title: const Text(
-          '✦ Cosmic Feed',
-          style: TextStyle(
-              color: SpaceTheme.stellarGold,
-              fontWeight: FontWeight.bold,
-              fontSize: 20),
-        ),
+        title: isReels
+            ? null
+            : const Text(
+                '✦ Cosmic Feed',
+                style: TextStyle(
+                    color: SpaceTheme.stellarGold,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              ),
         bottom: TabBar(
           controller: _tabController,
           indicatorColor: SpaceTheme.nebulaPurple,
-          labelColor: SpaceTheme.nebulaPurple,
+          labelColor: isReels ? Colors.white : SpaceTheme.nebulaPurple,
           unselectedLabelColor: Colors.white38,
           tabs: const [
             Tab(text: 'Takip Edilenler'),
             Tab(text: 'Keşfet'),
+            Tab(text: 'Reels'),
           ],
         ),
       ),
       body: _myProfile == null
-          ? const Center(
-              child: Text('Profil kurulumu tamamlanmadı.',
-                  style: TextStyle(color: Colors.white54)))
+          ? Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Profil yüklenemedi.',
+                      style: TextStyle(color: Colors.white54)),
+                  const SizedBox(height: 16),
+                  TextButton(
+                    onPressed: () {
+                      setState(() => _profileChecked = false);
+                      _checkProfile();
+                    },
+                    child: const Text('Tekrar Dene',
+                        style: TextStyle(color: SpaceTheme.nebulaPurple)),
+                  ),
+                ],
+              ),
+            )
           : TabBarView(
               controller: _tabController,
+              // Disable horizontal swipe on Reels tab so PageView gets vertical scroll
+              physics: _tabController.index == 2
+                  ? const NeverScrollableScrollPhysics()
+                  : const ScrollPhysics(),
               children: [
                 _FeedList(
                   key: const ValueKey('feed'),
@@ -113,9 +145,14 @@ class _FeedScreenState extends State<FeedScreen>
                   loader: FeedService.getExplore,
                   currentUserId: _myProfile!.userId,
                 ),
+                ReelsScreen(
+                  key: const ValueKey('reels'),
+                  loader: FeedService.getExplore,
+                  currentUserId: _myProfile!.userId,
+                ),
               ],
             ),
-      floatingActionButton: _myProfile != null
+      floatingActionButton: _myProfile != null && _tabController.index != 2
           ? FloatingActionButton(
               backgroundColor: SpaceTheme.nebulaPurple,
               foregroundColor: Colors.white,

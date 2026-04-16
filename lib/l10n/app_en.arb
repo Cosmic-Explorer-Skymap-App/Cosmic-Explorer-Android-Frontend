@@ -79,5 +79,9 @@
     "astrologyDaily": "Daily Horoscope",
     "astrologyMonthly": "Monthly Insight",
     "astrologyYearly": "Yearly Overview",
-    "astrologyResetDate": "Reset Birth Date"
+    "astrologyResetDate": "Reset Birth Date",
+    "timeJustNow": "just now",
+    "timeMinuteSuffix": "m ago",
+    "timeHourSuffix": "h ago",
+    "timeDaySuffix": "d ago"
 }

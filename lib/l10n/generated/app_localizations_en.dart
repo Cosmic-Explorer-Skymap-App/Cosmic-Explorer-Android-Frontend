@@ -257,4 +257,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get astrologyResetDate => 'Reset Birth Date';
+
+  @override
+  String get timeJustNow => 'just now';
+
+  @override
+  String get timeMinuteSuffix => 'm ago';
+
+  @override
+  String get timeHourSuffix => 'h ago';
+
+  @override
+  String get timeDaySuffix => 'd ago';
 }

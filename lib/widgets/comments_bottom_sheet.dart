@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import '../l10n/generated/app_localizations.dart';
 import '../models/comment_model.dart';
 import '../models/user_profile_model.dart';
 import '../services/feed_service.dart';
 import '../theme/space_theme.dart';
+import '../utils/time_utils.dart';
 import 'user_avatar.dart';
 
 class CommentsBottomSheet extends StatefulWidget {
@@ -144,11 +146,19 @@ class _CommentsSheetContentState extends State<_CommentsSheetContent> {
       ),
     );
     if (confirm == true) {
-      await FeedService.deleteComment(comment.id);
-      setState(() {
-        _comments.removeWhere((c) => c.id == comment.id);
-        _deleted++;
-      });
+      try {
+        await FeedService.deleteComment(comment.id);
+        setState(() {
+          _comments.removeWhere((c) => c.id == comment.id);
+          _deleted++;
+        });
+      } catch (_) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Yorum silinemedi. Tekrar dene.')),
+          );
+        }
+      }
     }
   }
 
@@ -273,7 +283,8 @@ class _CommentTile extends StatelessWidget {
                           style: const TextStyle(
                               color: Colors.white, fontWeight: FontWeight.w600, fontSize: 13)),
                       const SizedBox(width: 6),
-                      Text(comment.timeAgo,
+                      Text(
+                          formatTimeAgo(comment.createdAt, AppLocalizations.of(context)!),
                           style: const TextStyle(color: Colors.white38, fontSize: 11)),
                     ],
                   ),

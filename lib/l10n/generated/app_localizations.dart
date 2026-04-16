@@ -581,6 +581,30 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Doğum Tarihini Sıfırla'**
   String get astrologyResetDate;
+
+  /// No description provided for @timeJustNow.
+  ///
+  /// In tr, this message translates to:
+  /// **'az önce'**
+  String get timeJustNow;
+
+  /// No description provided for @timeMinuteSuffix.
+  ///
+  /// In tr, this message translates to:
+  /// **'dk önce'**
+  String get timeMinuteSuffix;
+
+  /// No description provided for @timeHourSuffix.
+  ///
+  /// In tr, this message translates to:
+  /// **'s önce'**
+  String get timeHourSuffix;
+
+  /// No description provided for @timeDaySuffix.
+  ///
+  /// In tr, this message translates to:
+  /// **'g önce'**
+  String get timeDaySuffix;
 }
 
 class _AppLocalizationsDelegate

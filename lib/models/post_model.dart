@@ -40,7 +40,7 @@ class Post {
       likeCount: json['like_count'] as int,
       commentCount: json['comment_count'] as int,
       isLikedByMe: json['is_liked_by_me'] as bool? ?? false,
-      createdAt: DateTime.parse(json['created_at'] as String),
+      createdAt: DateTime.parse(json['created_at'] as String).toUtc(),
     );
   }
 
@@ -66,15 +66,6 @@ class Post {
   }
 
   String get authorName => displayName?.isNotEmpty == true ? displayName! : username;
-
-  String get timeAgo {
-    final diff = DateTime.now().toUtc().difference(createdAt.toUtc());
-    if (diff.inSeconds < 60) return 'az önce';
-    if (diff.inMinutes < 60) return '${diff.inMinutes}d önce';
-    if (diff.inHours < 24) return '${diff.inHours}s önce';
-    if (diff.inDays < 7) return '${diff.inDays}g önce';
-    return '${createdAt.day}.${createdAt.month}.${createdAt.year}';
-  }
 }
 
 class FeedResponse {

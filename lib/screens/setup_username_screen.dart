@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import '../models/user_profile_model.dart';
 import '../services/feed_service.dart';
@@ -44,13 +45,19 @@ class _SetupUsernameScreenState extends State<SetupUsernameScreen> {
         displayName: _displayNameController.text.trim(),
       );
       if (mounted) Navigator.pop<UserProfile>(context, profile);
-    } catch (e) {
-      final msg = e.toString();
+    } on DioException catch (e) {
       if (mounted) {
         setState(() {
-          _error = msg.contains('409') || msg.contains('taken')
+          _error = e.response?.statusCode == 409
               ? 'Bu kullanıcı adı zaten alınmış.'
               : 'Bir hata oluştu. Tekrar dene.';
+          _loading = false;
+        });
+      }
+    } catch (_) {
+      if (mounted) {
+        setState(() {
+          _error = 'Bir hata oluştu. Tekrar dene.';
           _loading = false;
         });
       }

@@ -28,17 +28,9 @@ class Comment {
       displayName: json['display_name'] as String?,
       avatarUrl: json['avatar_url'] as String?,
       content: json['content'] as String,
-      createdAt: DateTime.parse(json['created_at'] as String),
+      createdAt: DateTime.parse(json['created_at'] as String).toUtc(),
     );
   }
 
   String get authorName => displayName?.isNotEmpty == true ? displayName! : username;
-
-  String get timeAgo {
-    final diff = DateTime.now().toUtc().difference(createdAt.toUtc());
-    if (diff.inSeconds < 60) return 'az önce';
-    if (diff.inMinutes < 60) return '${diff.inMinutes}d önce';
-    if (diff.inHours < 24) return '${diff.inHours}s önce';
-    return '${diff.inDays}g önce';
-  }
 }
