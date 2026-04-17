@@ -30,7 +30,10 @@ class ApiService {
         }
         return handler.next(options);
       },
-      onError: (DioException e, handler) {
+      onError: (DioException e, handler) async {
+        if (e.response?.statusCode == 401) {
+          await clearToken();
+        }
         return handler.next(e);
       },
     ));
@@ -50,7 +53,20 @@ class ApiService {
 
   static Future<bool> isAuthenticated() async {
     final token = await getToken();
-    return token != null;
+    if (token == null) return false;
+
+    try {
+      final response = await _dio.get('/api/auth/session');
+      final data = response.data;
+      if (response.statusCode == 200 && data is Map && data['authenticated'] == true) {
+        return true;
+      }
+    } on DioException {
+      // Token invalid or backend unreachable. In both cases we should not assume auth.
+    }
+
+    await clearToken();
+    return false;
   }
 
   // GET Wrapper

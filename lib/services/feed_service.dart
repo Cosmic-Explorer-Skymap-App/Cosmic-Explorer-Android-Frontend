@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import '../models/post_model.dart';
+import '../models/message_model.dart';
 import '../models/user_profile_model.dart';
 import '../models/comment_model.dart';
 import 'api_service.dart';
@@ -112,10 +113,14 @@ class FeedService {
     String? displayName,
     String? bio,
   }) async {
-    final response = await ApiService.put('/api/users/me/profile', data: {
-      if (displayName != null) 'display_name': displayName,
-      if (bio != null) 'bio': bio,
-    });
+    final payload = <String, dynamic>{};
+    if (displayName != null) {
+      payload['display_name'] = displayName;
+    }
+    if (bio != null) {
+      payload['bio'] = bio;
+    }
+    final response = await ApiService.put('/api/users/me/profile', data: payload);
     return UserProfile.fromJson(response.data);
   }
 
@@ -133,6 +138,16 @@ class FeedService {
   static Future<UserProfile> getUserProfile(int userId) async {
     final response = await ApiService.get('/api/users/$userId/profile');
     return UserProfile.fromJson(response.data);
+  }
+
+  static Future<List<UserProfile>> searchUsers(String query) async {
+    final response = await ApiService.get(
+      '/api/users/search',
+      queryParameters: {'q': query},
+    );
+    return (response.data as List)
+        .map((item) => UserProfile.fromJson(item))
+        .toList();
   }
 
   // ---------------------------------------------------------------------------
@@ -155,5 +170,41 @@ class FeedService {
   static Future<List<UserProfile>> getFollowing(int userId) async {
     final response = await ApiService.get('/api/users/$userId/following');
     return (response.data as List).map((e) => UserProfile.fromJson(e)).toList();
+  }
+
+  // ---------------------------------------------------------------------------
+  // Messages
+  // ---------------------------------------------------------------------------
+
+  static Future<List<Conversation>> getConversations() async {
+    final response = await ApiService.get('/api/messages/conversations');
+    return (response.data as List)
+        .map((item) => Conversation.fromJson(item as Map<String, dynamic>))
+        .toList();
+  }
+
+  static Future<Conversation> openConversation(int userId) async {
+    final response = await ApiService.post('/api/messages/conversations/$userId');
+    return Conversation.fromJson(response.data as Map<String, dynamic>);
+  }
+
+  static Future<List<ChatMessage>> getMessages(int conversationId) async {
+    final response = await ApiService.get('/api/messages/conversations/$conversationId/messages');
+    return (response.data as List)
+        .map((item) => ChatMessage.fromJson(item as Map<String, dynamic>))
+        .toList();
+  }
+
+  static Future<ChatMessage> sendMessage(int conversationId, String content) async {
+    final response = await ApiService.post(
+      '/api/messages/conversations/$conversationId/messages',
+      data: {'content': content},
+    );
+    return ChatMessage.fromJson(response.data as Map<String, dynamic>);
+  }
+
+  static Future<int> getUnreadCount() async {
+    final response = await ApiService.get('/api/messages/unread-count');
+    return response.data['unread_count'] as int? ?? 0;
   }
 }

@@ -5,7 +5,9 @@ import '../services/feed_service.dart';
 import '../theme/space_theme.dart';
 
 class SetupUsernameScreen extends StatefulWidget {
-  const SetupUsernameScreen({super.key});
+  final ValueChanged<UserProfile>? onCompleted;
+
+  const SetupUsernameScreen({super.key, this.onCompleted});
 
   @override
   State<SetupUsernameScreen> createState() => _SetupUsernameScreenState();
@@ -44,7 +46,12 @@ class _SetupUsernameScreenState extends State<SetupUsernameScreen> {
         username: username,
         displayName: _displayNameController.text.trim(),
       );
-      if (mounted) Navigator.pop<UserProfile>(context, profile);
+      if (!mounted) return;
+      if (widget.onCompleted != null) {
+        widget.onCompleted!(profile);
+      } else {
+        Navigator.pop<UserProfile>(context, profile);
+      }
     } on DioException catch (e) {
       if (mounted) {
         setState(() {

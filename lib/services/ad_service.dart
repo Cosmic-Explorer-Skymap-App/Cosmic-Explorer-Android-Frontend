@@ -1,5 +1,5 @@
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 class AdService {
   static const String _bannerAdUnitId = 'ca-app-pub-1924469525167599/4871813295';
@@ -15,9 +15,13 @@ class AdService {
       size: AdSize.banner,
       request: const AdRequest(),
       listener: BannerAdListener(
-        onAdLoaded: (Ad ad) => print('BannerAd loaded: ${ad.adUnitId}'),
+        onAdLoaded: (Ad ad) {
+          if (kDebugMode) debugPrint('BannerAd loaded: ${ad.adUnitId}');
+        },
         onAdFailedToLoad: (Ad ad, LoadAdError error) {
-          print('BannerAd failed to load: ${ad.adUnitId}, $error');
+          if (kDebugMode) {
+            debugPrint('BannerAd failed to load: ${ad.adUnitId}, $error');
+          }
           ad.dispose();
         },
       ),
@@ -45,7 +49,7 @@ class AdService {
           ad.show();
         },
         onAdFailedToLoad: (err) {
-          print('InterstitialAd failed to load: $err');
+          if (kDebugMode) debugPrint('InterstitialAd failed to load: $err');
           onDismissed();
         },
       ),
