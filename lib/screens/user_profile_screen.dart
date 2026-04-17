@@ -1,10 +1,15 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
 import '../models/post_model.dart';
 import '../models/user_profile_model.dart';
 import '../services/feed_service.dart';
 import '../theme/space_theme.dart';
 import '../widgets/user_avatar.dart';
+import 'messages_screen.dart';
 import 'post_detail_screen.dart';
 
 class UserProfileScreen extends StatefulWidget {
@@ -22,13 +27,15 @@ class UserProfileScreen extends StatefulWidget {
 }
 
 class _UserProfileScreenState extends State<UserProfileScreen> {
+  final ImagePicker _imagePicker = ImagePicker();
+  final ScrollController _scrollController = ScrollController();
   UserProfile? _profile;
   List<Post> _posts = [];
   bool _loading = true;
   bool _followLoading = false;
+  bool _avatarLoading = false;
   int? _nextCursor;
   bool _hasMore = true;
-  final _scrollController = ScrollController();
 
   bool get _isOwn => widget.userId == widget.currentUserId;
 
@@ -46,8 +53,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   }
 
   void _onScroll() {
-    if (_scrollController.position.pixels >=
-        _scrollController.position.maxScrollExtent - 300) {
+    if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - 300) {
       _loadMorePosts();
     }
   }
@@ -58,17 +64,16 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         FeedService.getUserProfile(widget.userId),
         FeedService.getUserPosts(widget.userId),
       ]);
-      if (mounted) {
-        final feed = results[1] as FeedResponse;
-        setState(() {
-          _profile = results[0] as UserProfile;
-          _posts = feed.posts;
-          _nextCursor = feed.nextCursor;
-          _hasMore = feed.hasMore;
-          _loading = false;
-        });
-      }
-    } catch (e) {
+      if (!mounted) return;
+      final feed = results[1] as FeedResponse;
+      setState(() {
+        _profile = results[0] as UserProfile;
+        _posts = feed.posts;
+        _nextCursor = feed.nextCursor;
+        _hasMore = feed.hasMore;
+        _loading = false;
+      });
+    } catch (_) {
       if (mounted) setState(() => _loading = false);
     }
   }
@@ -77,13 +82,12 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     if (!_hasMore || _nextCursor == null) return;
     try {
       final feed = await FeedService.getUserPosts(widget.userId, cursor: _nextCursor);
-      if (mounted) {
-        setState(() {
-          _posts.addAll(feed.posts);
-          _nextCursor = feed.nextCursor;
-          _hasMore = feed.hasMore;
-        });
-      }
+      if (!mounted) return;
+      setState(() {
+        _posts.addAll(feed.posts);
+        _nextCursor = feed.nextCursor;
+        _hasMore = feed.hasMore;
+      });
     } catch (_) {}
   }
 
@@ -110,6 +114,35 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
       }
     } catch (_) {}
     if (mounted) setState(() => _followLoading = false);
+  }
+
+  Future<void> _openMessages() async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => MessagesScreen(
+          currentUserId: widget.currentUserId,
+          initialUserId: widget.userId,
+        ),
+      ),
+    );
+  }
+
+  Future<void> _updateAvatar() async {
+    final file = await _imagePicker.pickImage(
+      source: ImageSource.gallery,
+      imageQuality: 88,
+      maxWidth: 1600,
+    );
+    if (file == null) return;
+
+    setState(() => _avatarLoading = true);
+    try {
+      final updated = await FeedService.uploadAvatar(File(file.path));
+      if (!mounted) return;
+      setState(() => _profile = updated);
+    } catch (_) {}
+    if (mounted) setState(() => _avatarLoading = false);
   }
 
   @override
@@ -149,6 +182,27 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         onPressed: () => Navigator.pop(context),
       ),
+      actions: [
+        if (_isOwn)
+          IconButton(
+            tooltip: 'Profil fotoğrafı güncelle',
+            icon: _avatarLoading
+                ? const SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                  )
+                : const Icon(Icons.photo_camera_outlined, color: Colors.white),
+            onPressed: _avatarLoading ? null : _updateAvatar,
+          )
+        else
+          IconButton(
+            tooltip: 'Mesaj gönder',
+            icon: const Icon(Icons.chat_bubble_outline_rounded, color: Colors.white),
+            onPressed: _openMessages,
+          ),
+        const SizedBox(width: 4),
+      ],
     );
   }
 
@@ -161,10 +215,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         children: [
           Row(
             children: [
-              UserAvatar(
-                  username: profile.username,
-                  avatarUrl: profile.avatarUrl,
-                  radius: 36),
+              UserAvatar(username: profile.username, avatarUrl: profile.avatarUrl, radius: 36),
               const SizedBox(width: 20),
               Expanded(
                 child: Row(
@@ -181,39 +232,70 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
           const SizedBox(height: 14),
           Text(
             profile.displayedName,
-            style: const TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
           ),
           if (profile.bio != null && profile.bio!.isNotEmpty) ...[
             const SizedBox(height: 4),
-            Text(profile.bio!,
-                style: const TextStyle(color: Colors.white70, fontSize: 13)),
+            Text(profile.bio!, style: const TextStyle(color: Colors.white70, fontSize: 13)),
           ],
-          if (!_isOwn) ...[
+          if (_isOwn) ...[
             const SizedBox(height: 14),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: _followLoading ? null : _toggleFollow,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: profile.isFollowing
-                      ? SpaceTheme.surfaceCardLight
-                      : SpaceTheme.nebulaPurple,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                ),
-                child: _followLoading
-                    ? const SizedBox(
-                        width: 18,
-                        height: 18,
-                        child: CircularProgressIndicator(
-                            strokeWidth: 2, color: Colors.white))
-                    : Text(
-                        profile.isFollowing ? 'Takip Ediliyor' : 'Takip Et',
-                        style: const TextStyle(fontWeight: FontWeight.w600)),
+            OutlinedButton.icon(
+              onPressed: _avatarLoading ? null : _updateAvatar,
+              icon: const Icon(Icons.photo_camera_outlined),
+              label: const Text('Profil Fotoğrafını Güncelle'),
+              style: OutlinedButton.styleFrom(
+                foregroundColor: Colors.white,
+                side: const BorderSide(color: Colors.white24),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
               ),
+            ),
+          ] else ...[
+            const SizedBox(height: 14),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: _followLoading ? null : _toggleFollow,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: profile.isFollowing ? SpaceTheme.surfaceCardLight : SpaceTheme.nebulaPurple,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                    ),
+                    child: _followLoading
+                        ? const SizedBox(
+                            width: 18,
+                            height: 18,
+                            child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                          )
+                        : Text(
+                            profile.isFollowing ? 'Takip Ediliyor' : 'Takip Et',
+                            style: const TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: _openMessages,
+                    icon: const Icon(Icons.chat_bubble_outline_rounded),
+                    label: const Text('Mesaj'),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      side: const BorderSide(color: Colors.white24),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            const Text(
+              'Takip ederek akışta öncelik kazanır, mesaj atarak doğrudan iletişim kurarsın.',
+              style: TextStyle(color: Colors.white38, fontSize: 12, height: 1.4),
             ),
           ],
           const SizedBox(height: 16),
@@ -229,8 +311,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         child: Padding(
           padding: EdgeInsets.all(40),
           child: Center(
-            child: Text('Henüz paylaşım yok.',
-                style: TextStyle(color: Colors.white38)),
+            child: Text('Henüz paylaşım yok.', style: TextStyle(color: Colors.white38)),
           ),
         ),
       );
@@ -254,12 +335,10 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               child: CachedNetworkImage(
                 imageUrl: post.imageUrl,
                 fit: BoxFit.cover,
-                placeholder: (_, __) =>
-                    Container(color: SpaceTheme.surfaceCard),
-                errorWidget: (_, __, ___) => Container(
+                placeholder: (context, url) => Container(color: SpaceTheme.surfaceCard),
+                errorWidget: (context, url, error) => Container(
                   color: SpaceTheme.surfaceCard,
-                  child: const Icon(Icons.broken_image,
-                      color: Colors.white24),
+                  child: const Icon(Icons.broken_image, color: Colors.white24),
                 ),
               ),
             );
@@ -294,11 +373,9 @@ class _StatItem extends StatelessWidget {
       children: [
         Text(
           value > 999 ? '${(value / 1000).toStringAsFixed(1)}k' : '$value',
-          style: const TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
+          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
         ),
-        Text(label,
-            style: const TextStyle(color: Colors.white54, fontSize: 12)),
+        Text(label, style: const TextStyle(color: Colors.white54, fontSize: 12)),
       ],
     );
   }

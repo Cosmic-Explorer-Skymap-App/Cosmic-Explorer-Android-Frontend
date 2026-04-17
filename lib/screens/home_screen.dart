@@ -3,6 +3,8 @@ import 'package:cosmic_explorer/l10n/generated/app_localizations.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../theme/space_theme.dart';
 import '../services/ad_service.dart';
+import '../models/user_profile_model.dart';
+import '../widgets/user_avatar.dart';
 import 'sky_map_screen.dart';
 import 'planets_screen.dart';
 import 'constellations_screen.dart';
@@ -13,15 +15,20 @@ import 'astrology_screen.dart';
 import 'gallery_screen.dart';
 import 'feed_screen.dart';
 import '../services/auth_service.dart';
+import '../services/feed_service.dart';
 import 'login_screen.dart';
 import '../services/iss_service.dart';
 import '../services/calendar_service.dart'; // Added
 import '../services/notification_service.dart'; // Added
 import 'dart:async'; // Added for Timer
 import 'support_screen.dart';
+import 'user_profile_screen.dart';
+import 'messages_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final UserProfile currentUser;
+
+  const HomeScreen({super.key, required this.currentUser});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -34,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin, 
   BannerAd? _bannerAd;
 
   List<Widget> get _screens => [
-    const _HomeBody(),
+    const SizedBox.shrink(),
     const PlanetsScreen(),
     const ConstellationsScreen(),
     const QuizScreen(),
@@ -99,7 +106,18 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin, 
       drawer: _buildDrawer(context), // Added Drawer
       body: FadeTransition(
         opacity: _fadeAnim,
-        child: _screens[_currentIndex],
+        child: _currentIndex == 0
+            ? _HomeBody(currentUser: widget.currentUser)
+            : _screens[_currentIndex],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: _FeedFab(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const FeedScreen()),
+          );
+        },
       ),
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
@@ -190,7 +208,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin, 
 
 /// Home body with hero header and feature cards.
 class _HomeBody extends StatelessWidget {
-  const _HomeBody();
+  final UserProfile currentUser;
+
+  const _HomeBody({required this.currentUser});
 
   @override
   Widget build(BuildContext context) {
@@ -211,29 +231,115 @@ class _HomeBody extends StatelessWidget {
             children: [
               // Header
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          l10n.homeHeaderTitle,
-                          style: Theme.of(context).textTheme.headlineLarge,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => UserProfileScreen(
+                              userId: currentUser.userId,
+                              currentUserId: currentUser.userId,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(14),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.06),
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
                         ),
-                        const SizedBox(height: 4),
-                        Text(
-                          l10n.homeHeaderSubtitle,
-                          style: Theme.of(context).textTheme.bodyMedium,
+                        child: Row(
+                          children: [
+                            UserAvatar(
+                              username: currentUser.username,
+                              avatarUrl: currentUser.avatarUrl,
+                              radius: 24,
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    currentUser.displayedName,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 2),
+                                  Text(
+                                    '@${currentUser.username} · Profilim',
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(color: Colors.white60, fontSize: 12),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const Icon(Icons.chevron_right_rounded, color: Colors.white54),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
-                  Builder(
-                    builder: (context) => IconButton(
-                      icon: const Icon(Icons.menu_rounded, size: 32, color: Colors.white),
-                      onPressed: () => Scaffold.of(context).openDrawer(),
-                    ),
+                  const SizedBox(width: 12),
+                  FutureBuilder<int>(
+                    future: FeedService.getUnreadCount(),
+                    builder: (context, snapshot) {
+                      final unread = snapshot.data ?? 0;
+                      return Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              IconButton(
+                                tooltip: 'Mesajlar',
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => MessagesScreen(currentUserId: currentUser.userId),
+                                    ),
+                                  );
+                                },
+                                icon: const Icon(Icons.chat_bubble_outline_rounded, color: Colors.white),
+                              ),
+                              if (unread > 0)
+                                Positioned(
+                                  right: 8,
+                                  top: 8,
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                                    decoration: BoxDecoration(
+                                      color: Colors.redAccent,
+                                      borderRadius: BorderRadius.circular(99),
+                                    ),
+                                    child: Text(
+                                      unread > 99 ? '99+' : '$unread',
+                                      style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w700),
+                                    ),
+                                  ),
+                                ),
+                            ],
+                          ),
+                          Builder(
+                            builder: (context) => IconButton(
+                              icon: const Icon(Icons.menu_rounded, size: 30, color: Colors.white),
+                              onPressed: () => Scaffold.of(context).openDrawer(),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ],
               ),
@@ -376,6 +482,27 @@ class _HomeBody extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _FeedFab extends StatelessWidget {
+  final VoidCallback onPressed;
+
+  const _FeedFab({required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 6),
+      child: FloatingActionButton.extended(
+        onPressed: onPressed,
+        backgroundColor: SpaceTheme.nebulaPurple,
+        foregroundColor: Colors.white,
+        elevation: 14,
+        icon: const Icon(Icons.dynamic_feed_rounded),
+        label: const Text('Feed'),
       ),
     );
   }
