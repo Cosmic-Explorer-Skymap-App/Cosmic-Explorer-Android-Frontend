@@ -381,13 +381,13 @@ class AstronomyMath {
     double v = atan2(yv, xv) * _rad2deg;
     double r = sqrt(xv * xv + yv * yv);
 
-    double v_w = (v + w) * _deg2rad;
+    double vW = (v + w) * _deg2rad;
     double Nrad = N * _deg2rad;
     double irad = i * _deg2rad;
 
-    double xh = r * (cos(Nrad) * cos(v_w) - sin(Nrad) * sin(v_w) * cos(irad));
-    double yh = r * (sin(Nrad) * cos(v_w) + cos(Nrad) * sin(v_w) * cos(irad));
-    double zh = r * (sin(v_w) * sin(irad));
+    double xh = r * (cos(Nrad) * cos(vW) - sin(Nrad) * sin(vW) * cos(irad));
+    double yh = r * (sin(Nrad) * cos(vW) + cos(Nrad) * sin(vW) * cos(irad));
+    double zh = r * (sin(vW) * sin(irad));
 
     // Sun pos from Earth point of view 
     // (we actually need Earth pos from Sun point of view)
@@ -418,14 +418,14 @@ class AstronomyMath {
 
     // Earth from Sun
     double earthLonRad = sunLonRad + pi;
-    double xe_sun = re * cos(earthLonRad);
-    double ye_sun = re * sin(earthLonRad);
-    double ze_sun = 0;
+    double xeSun = re * cos(earthLonRad);
+    double yeSun = re * sin(earthLonRad);
+    double zeSun = 0;
 
     // Geocentric Ecliptic for Planet
-    double xg = xh - xe_sun;
-    double yg = yh - ye_sun;
-    double zg = zh - ze_sun;
+    double xg = xh - xeSun;
+    double yg = yh - yeSun;
+    double zg = zh - zeSun;
 
     // Convert to equatorial
     double ecl = 23.439281 * _deg2rad;
@@ -488,8 +488,8 @@ class AstronomyMath {
     );
 
     // Elevation (Altitude)
-    final double r_ratio = radiusEarth / (radiusEarth + satAltKm);
-    final double alt = atan2(cosC - r_ratio, sinC);
+    final double rRatio = radiusEarth / (radiusEarth + satAltKm);
+    final double alt = atan2(cosC - rRatio, sinC);
 
     return CelestialPosition(
       altitude: alt,

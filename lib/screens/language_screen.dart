@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/locale_service.dart';
 import '../theme/space_theme.dart';
-import 'home_screen.dart';
 
 class LanguageSelectionScreen extends StatelessWidget {
   final ValueChanged<Locale> onLocaleChange;
